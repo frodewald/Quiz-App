@@ -6,7 +6,7 @@ import '../styles/QuizPage.css';
 const QuizPage = () => {
   return (
     <div className="quiz-page-container">
-      <h2 className="quiz-page-title">Quiz Page</h2>
+      <h2 className="quiz-page-title">Fun Quiz App</h2>
       <Quiz />
     </div>
   );

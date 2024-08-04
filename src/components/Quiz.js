@@ -9,7 +9,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [timer, setTimer] = useState(300); 
+  const [timer, setTimer] = useState(60); 
   const navigate = useNavigate();
 
   const scoreRef = useRef(score);
@@ -24,7 +24,8 @@ const Quiz = () => {
       setQuestions(savedQuiz.questions);
       setCurrentQuestionIndex(savedQuiz.currentQuestionIndex);
       setScore(savedQuiz.score);
-      setTimer(savedQuiz.timer);
+      const timeElapsed = Math.floor((Date.now() - savedQuiz.startTime) / 1000);
+      setTimer(Math.max(savedQuiz.timer - timeElapsed, 0));
     } else {
       fetchQuestions();
     }
@@ -53,6 +54,7 @@ const Quiz = () => {
           currentQuestionIndex,
           score,
           timer: timerRef.current,
+          startTime: Date.now() - (60 - timerRef.current) * 1000
         }
       
       localStorage.setItem('quiz', JSON.stringify(quizData));

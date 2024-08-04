@@ -11,7 +11,7 @@ const Login = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       localStorage.setItem('username', username);
-      navigate('/quiz');
+      navigate('/');
   };
 
   return (
