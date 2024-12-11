@@ -12,7 +12,7 @@ const db = require('./app/models');
 const { FE_BASE_URL } = require('./config/api');
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://quiz-app-c871.onrender.com'],      
+  origin: 'http://localhost:3000',      
   methods: 'GET,POST,PUT,DELETE,OPTIONS', 
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   credentials: true 
@@ -35,6 +35,7 @@ app.use(
       secure: process.env.NODE_ENV === 'production', // Gunakan HTTPS jika di production
       httpOnly: true, // false kalo menggunakan https
       maxAge: 1000 * 60 * 60 * 24, // 1 hari
+      sameSite: 'none'
     }
   })
 );
@@ -76,7 +77,6 @@ app.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
-    req.session.user_id = req.user.id;
     res.redirect(FE_BASE_URL);
   }
 );
