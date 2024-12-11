@@ -18,6 +18,8 @@ const corsOptions = {
   credentials: true 
 };
 
+app.use(cors(corsOptions));
+
 // Middleware
 app.use(express.json());
 app.use(
@@ -38,8 +40,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
