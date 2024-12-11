@@ -106,6 +106,7 @@ exports.login = async (req, res) => {
 
         // Jika login berhasil
         req.session.user_id = getUser._id;
+        console.log('Session after login:', req.session);
         res.status(200).send({
             message: 'Login successfully',
             user: getUser,
