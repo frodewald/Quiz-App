@@ -45,7 +45,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const isAuthenticated = (req, res) => {
-  if (req.isAuthenticated() || req.session.user_id || req.session.passport.user) {
+  if (req.isAuthenticated() || req.session.user_id || req.session.passport.user || req.session.user || req.user) {
     return res.json({ authenticated: true, user: req.user || req.session.user_id || req.session.passport.user });
   }
   res.json({ authenticated: false });
