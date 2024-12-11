@@ -76,6 +76,7 @@ app.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
+    req.session.user_id = req.user.id;
     res.redirect(FE_BASE_URL);
   }
 );
