@@ -30,8 +30,8 @@ app.use(
       collectionName: 'sessions',
     }),
     cookie: {
-      secure: process.env.NODE_ENV === 'production',
-      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Gunakan HTTPS jika di production
+      httpOnly: true, // false kalo menggunakan https
       maxAge: 1000 * 60 * 60 * 24 // 1 hari
     }
   })
@@ -116,8 +116,6 @@ app.get('/get-user', (req, res) => {
 
 require('./app/routes/user.route')(app);
 require('./app/routes/record.route')(app);
-// require('./app/routes/cart.route')(app);
-// require('./app/routes/order.route')(app);
 
 
 app.listen(PORT, () => {
