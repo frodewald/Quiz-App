@@ -32,7 +32,8 @@ app.use(
     cookie: {
       secure: process.env.NODE_ENV === 'production', // Gunakan HTTPS jika di production
       httpOnly: true, // false kalo menggunakan https
-      maxAge: 1000 * 60 * 60 * 24 // 1 hari
+      maxAge: 1000 * 60 * 60 * 24, // 1 hari
+      sameSite: 'none',
     }
   })
 );
@@ -105,6 +106,7 @@ app.get('/api/logout', (req, res) => {
 });
 
 app.get('/get-user', (req, res) => {
+  console.log('Session:', req.session);
   if (req.session.user_id || req.user) {
     res.status(200).send({ user_id: req.session.user_id || req.user._id });
   } else {
