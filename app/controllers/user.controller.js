@@ -106,6 +106,12 @@ exports.login = async (req, res) => {
 
         // Jika login berhasil
         req.session.user_id = getUser._id;
+        req.session.save((err) => {
+          if (err) {
+            console.error('Failed to save session:', err);
+          }
+          res.status(200).send({ message: 'Login successful' });
+        });
         console.log('Session after login:', req.session);
         res.status(200).send({
             message: 'Login successfully',
