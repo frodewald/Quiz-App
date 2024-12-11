@@ -12,7 +12,7 @@ const db = require('./app/models');
 const { FE_BASE_URL } = require('./config/api');
 
 const corsOptions = {
-  origin: 'http://localhost:3000',      
+  origin: ['http://localhost:3000', 'https://quiz-app-c871.onrender.com'],      
   methods: 'GET,POST,PUT,DELETE,OPTIONS', 
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   credentials: true 
