@@ -14,7 +14,7 @@ const { FE_BASE_URL } = require('./config/api');
 const corsOptions = {
   origin: FE_BASE_URL,      
   methods: 'GET,POST,PUT,DELETE,OPTIONS', 
-  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
+  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   credentials: true 
 };
 
@@ -107,11 +107,11 @@ app.get('/api/logout', (req, res) => {
 
 app.get('/get-user', (req, res) => {
   console.log('Session:', req.session);
+  console.log('User:', req.user);
   if (req.session.user_id || req.user) {
-    res.status(200).send({ user_id: req.session.user_id || req.user._id });
-  } else {
-    res.status(401).send({ message: 'User not logged in' });
+    return res.status(200).send({ user_id: req.session.user_id || req.user._id });
   }
+  res.status(401).send({ message: 'User not logged in' });
 });
 
 
