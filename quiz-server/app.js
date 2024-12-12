@@ -5,6 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 const PORT = process.env.PORT || 8000;
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const passport = require('passport');
 require('./passport');
 const db = require('./app/models');
@@ -23,10 +24,19 @@ app.use(
   session({
     secret: process.env.SECRET_KEY,
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: db.url,
+      collectionName: 'sessions',
+    }),
+    cookie: {
+      secure: process.env.NODE_ENV === 'production', // Gunakan HTTPS jika di production
+      httpOnly: true, // false kalo menggunakan https
+      maxAge: 1000 * 60 * 60 * 24, // 1 hari
+    }
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -107,8 +117,6 @@ app.get('/get-user', (req, res) => {
 
 require('./app/routes/user.route')(app);
 require('./app/routes/record.route')(app);
-// require('./app/routes/cart.route')(app);
-// require('./app/routes/order.route')(app);
 
 
 app.listen(PORT, () => {

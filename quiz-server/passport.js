@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const db = require('./app/models');
 const User = db.users;
 const crypto = require('crypto');
+const { BASE_URL } = require('./config/api');
 
 // Serialize user
 passport.serializeUser((user, done) => {
@@ -25,7 +26,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:8000/auth/google/callback',
+      callbackURL: `${BASE_URL}/auth/google/callback`,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
