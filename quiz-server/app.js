@@ -30,7 +30,7 @@ app.use(
       collectionName: 'sessions',
     }),
     cookie: {
-      secure: process.env.NODE_ENV === 'production', // Gunakan HTTPS jika di production
+      secure: true, // Gunakan HTTPS jika di production
       httpOnly: true, // false kalo menggunakan https
       maxAge: 1000 * 60 * 60 * 24, // 1 hari
       sameSite: 'none'
