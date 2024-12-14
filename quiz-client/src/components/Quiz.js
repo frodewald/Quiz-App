@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Question from './Question';
 import '../styles/Quiz.css';
 import { RECORD_API_ENDPOINT } from '../services/api';
+import { ThreeDots } from 'react-loading-icons';
 
 const Quiz = () => {
   const quizTime = 120;
@@ -15,6 +16,8 @@ const Quiz = () => {
   const [timer, setTimer] = useState(quizTime); 
   const navigate = useNavigate();
   const [startQuizTime, setStartQuizTime] = useState(Date.now());
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const scoreRef = useRef(correctScore);
   const currentQuestionIndexRef = useRef(currentQuestionIndex);
@@ -136,6 +139,7 @@ const Quiz = () => {
   };
 
   const endQuiz = async () => {
+    setLoading(true);
     try {
       const finalScore = calculateFinalScore();
       // console.log('Final Score:', finalScore);
@@ -152,9 +156,17 @@ const Quiz = () => {
 
       setStartQuizTime(null);
       localStorage.removeItem('quiz');
+      setLoading(false);
       navigate('/result');
-    } catch (err) {
-
+    } catch (error) {
+      setLoading(false);
+      if (error.response) {
+        setError(error.response.data.message || 'An error occurred.');
+      } else if (error.request) {
+        setError('No response from server. Please try again later.');
+      } else {
+        setError('An error occurred. Please try again.');
+      }
     }
   };
 
@@ -170,9 +182,14 @@ const Quiz = () => {
       {questions.length > 0 ? (
         <>
           <div className="quiz-info">
-            <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
-            <span>Time Left: {timer}s</span>
+            <span><b>Question {currentQuestionIndex + 1} of {questions.length}</b></span>
+            {loading &&  
+              <div className='m-auto text-center'>
+                <ThreeDots fill='black' width={30} height={30} />
+              </div>
+            }
           </div>
+          
           <Question
             data={currentQuestion}
             shuffledAnswers={shuffledAnswers}

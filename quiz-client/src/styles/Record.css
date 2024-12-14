@@ -22,3 +22,20 @@
     font-size: 11px;
   }
 }
+
+@media (max-width: 425px) {
+  .form-select {
+    font-size: 11px;
+    width: 60% !important;
+  }
+
+  .record-container {
+    font-size: 10px;
+  }
+
+  th {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+

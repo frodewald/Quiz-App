@@ -87,10 +87,16 @@
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .result-button:hover {
   background-color: #0056b3;
+}
+
+.pagination-button {
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 @media (max-width: 576px) {

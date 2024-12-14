@@ -21,7 +21,7 @@ const UserWidget = ({
     <>
       {isAuthenticated ? (
         <div>
-          <div className="d-flex align-items-center" style={{ cursor: 'pointer' }} onClick={handleFormUpdateUser}>
+          <div className="d-flex align-items-center justify-content-center" style={{ cursor: 'pointer' }} onClick={handleFormUpdateUser}>
             <img
               src={userData?.picture ? userData.picture : 'https://avatar.iran.liara.run/public'}
               alt="img"

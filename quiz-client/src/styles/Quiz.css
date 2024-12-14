@@ -11,8 +11,7 @@
 
 /* Quiz Info */
 .quiz-info {
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
   width: 100%;
   max-width: 600px;
   margin-bottom: 20px;
@@ -24,4 +23,12 @@
 .loading {
   font-size: 1.5rem;
   color: #333;
+}
+
+@media (max-width: 576px) {
+  .quiz-info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

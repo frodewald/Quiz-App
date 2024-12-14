@@ -65,7 +65,7 @@ const Login = ({ setIsAuthenticated }) => {
           <input
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value.toLowerCase())}
             className="login-input"
           />
         </label>

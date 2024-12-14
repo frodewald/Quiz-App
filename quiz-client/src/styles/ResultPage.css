@@ -15,3 +15,36 @@
   color: #333;
   margin-bottom: 1.5rem;
 }
+
+@media (max-width: 375px) {
+  .result-card {
+    width: 70px;
+  }
+  .pagination-button button {
+    font-size: 12px;
+  }
+  .result-page-container .result-container .record-container {
+    width: 100% !important;
+  }
+  .result-page-container .result-container {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 425px) {
+  .pagination-button button {
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .pagination-button button {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  .record-container .container .table tbody td {
+    padding: 8px 4px;
+  }
+}

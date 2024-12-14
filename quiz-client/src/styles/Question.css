@@ -53,3 +53,15 @@
   font-size: 1.25rem;
   color: #ff0000;
 }
+
+@media (max-width: 768px) {
+  .question-container {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .question-container {
+    max-width: 90%;
+  }
+}

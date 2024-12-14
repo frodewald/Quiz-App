@@ -46,13 +46,13 @@ const Pagination = ({ totalRecords, recordsPerPage, currentPage, onPageChange })
   const pageNumbers = generatePageNumbers();
 
   return (
-    <div className="d-flex justify-content-center my-4">
+    <div className="d-flex justify-content-center my-4 pagination-button">
       <button
         className="btn btn-outline-primary me-2"
         onClick={handlePrev}
         disabled={currentPage === 1}
       >
-        &laquo; Prev
+        Prev
       </button>
 
       {pageNumbers.map((number, index) => (
@@ -71,7 +71,7 @@ const Pagination = ({ totalRecords, recordsPerPage, currentPage, onPageChange })
         onClick={handleNext}
         disabled={currentPage === totalPages}
       >
-        Next &raquo;
+        Next
       </button>
     </div>
   );
