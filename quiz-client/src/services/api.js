@@ -1,4 +1,4 @@
-export const BASE_URL = "https://quiz-app-production-da75.up.railway.app";
+export const BASE_URL = "https://quiz-app-c871.onrender.com";
 
 export const CHECK_AUTH = `${BASE_URL}/auth/status`;
 
