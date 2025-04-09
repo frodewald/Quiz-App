@@ -20,6 +20,7 @@ const corsOptions = {
 
 // Middleware
 app.use(express.json());
+app.set('trust proxy', true);
 app.use(
   session({
     secret: process.env.SECRET_KEY,
