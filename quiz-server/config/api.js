@@ -1,5 +1,5 @@
-const BASE_URL = 'https://quiz-app-production-da75.up.railway.app';
-const FE_BASE_URL = 'https://quiz-app-client-production.up.railway.app';
+const BASE_URL = 'https://quiz-app-c871.onrender.com';
+const FE_BASE_URL = 'https://quiz-app-client-w43b.onrender.com';
 
 module.exports = {
   BASE_URL,
